@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<div class="container" >
+
+  <div class="contact">  
+
+    <h3>Employee</h3>
+   
+    <div class="alert">your message has been sent</div>
+
+    <form id="contactForm">
+        <p>
+          <label>Name</label>
+          <input type="text"  name="name" id="name" required><br>
+
+        </p>
+
+         <p>
+          <label>company</label>
+          <input type="text" name="company" id="company"><br>
+        </p>
+
+         <p>
+          <label>Email Address</label>
+          <input  type="email" name="email" id="email" required><br>
+        </p>
+         
+        <p>
+            <label>Phone Number</label>
+            <input type="text"  name="phone" id="phone"><br>
+        </p>
+
+          <p class="full">
+            <button type="submit">Submit</button>
+          </p>
+      
+      </form>
+
+    </div>
+
+</div>
+
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
