@@ -12,46 +12,85 @@
 </head>
 <body>
 
+<!--header -->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">BitplayLabs</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Page 3</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+
+         
+        </div>
+      </nav>
+        
+   
+
+
 
 <div class="container" >
-
-  <div class="contact">  
-
-    <h3>Employee</h3>
+      <div class="contact">  
+          <div class="row">
+             <div class="col-lg-3">
+    <h3>Register</h3>
    
     <div class="alert">your message has been sent</div>
 
-    <form id="contactForm">
-        <p>
+    <form id="RegisterForm">
+       
+        <div class="form-group">
+
           <label>Name</label>
-          <input type="text"  name="name" id="name" required><br>
+          <input class="form-control" type="text"  name="name" id="name" required><br>
 
-        </p>
+        </div>
 
-         <p>
-          <label>company</label>
-          <input type="text" name="company" id="company"><br>
-        </p>
+         <div class="form-group">
+          <label>Email</label>
+          <input class="form-control"  type="email" name="email" id="email" required><br>
+        </div>
 
-         <p>
-          <label>Email Address</label>
-          <input  type="email" name="email" id="email" required><br>
-        </p>
+        <div class="form-group">
+            <label>password</label>
+            <input class="form-control" type="password" name="password" id="password" required><br>
+          </div>
          
-        <p>
-            <label>Phone Number</label>
-            <input type="text"  name="phone" id="phone"><br>
-        </p>
+          <div class="form-group">
+            <label>Phone</label>
+            <input class="form-control" type="text"  name="phone" id="phone" required><br>
+          </div>
 
           <p class="full">
-            <button type="submit">Submit</button>
+            <button class="btn btn-info" type="submit">Submit</button>
           </p>
-      
+       
       </form>
+    
+              </div>
 
-    </div>
+            </div>
 
+       </div>
 </div>
+
+
+<!--footer -->
+<div class="container">
+    <footer>
+        <p>Posted by: Bitplaylab</p>
+        <p>Contact information: <a href="bitplaylab@gmal.com">
+        bitplaylab@gmail.com</a>.</p>
+      </footer>
+  </div>
 
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
     <script src="app.js"></script>

@@ -14,7 +14,7 @@
 var messagesRef = firebase.database().ref('messages');
 
 //Listen for form submit
- document.getElementById('contactForm').addEventListener('submit',
+ document.getElementById('RegisterForm').addEventListener('submit',
  submitForm);
 
 //submit form
@@ -23,14 +23,14 @@ var messagesRef = firebase.database().ref('messages');
 
     //get values
     var name = getInputVal('name');
-    var company = getInputVal('company');
     var email = getInputVal('email');
+    var company = getInputVal('password');
     var phone = getInputVal('phone');
 
 
 
   //save message
-   saveMessage(name,company,email,phone);
+   saveMessage(name,email,password,phone);
    
    //show alert
    document.querySelector('.alert').style.display = 'block';
@@ -45,7 +45,7 @@ var messagesRef = firebase.database().ref('messages');
 
 
    //clear form
-   document.getElementById('contactForm').reset();
+   document.getElementById('RegisterForm').reset();
 
 
  }
@@ -60,17 +60,33 @@ var messagesRef = firebase.database().ref('messages');
 
     //save message to firebase
 
-    function saveMessage(name,company,emai,phone){
+    function saveMessage(name,emai,password,phone){
         var newMessageRef = messagesRef.push();
         
         newMessageRef.set({
 
             name: name,
-            company: company,
             email: emai,
+            password: password,
             phone: phone
 
         });
+
+
+        //read data form firebase 
+        var database = firebase.database();
+        var messageRef = database.ref().child('messages')
+        messageRef.once('value', function(snapshot){
+            console.log('Key:' + JSON.stringify(snapshot.Key));
+            console.log('val:' + JSON.stringify(snapshot.val()));
+            console.log('numChildren:' + JSON.stringify(snapshot.numChildren()));
+            snapshot.forEach(function(item){
+                console.log(JSON.stringify(item.val()));
+            })
+        })
+
+
+        
 
     }
 
