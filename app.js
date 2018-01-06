@@ -86,7 +86,7 @@ var messagesRef = firebase.database().ref('messages');
         })
 
 
-        
 
-    }
+     
+ }
 
