@@ -25,29 +25,23 @@
             <li><a href="#">Contact Us</a></li>
             <li><a href="#">Page 3</a></li>
           </ul>
-        <!--  <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>-->
-
-         
         </div>
       </nav>
-        
-   
+
 
 
 <!--Body Content-->
+
 <div class="container" >
-      <div class="contact">  
+     
           <div class="row">
              <div class="col-lg-3">
-    <h3>Login</h3>
+   <div id="LoginForm">
    
-   
-    <form id="LoginForm">
-       
-         <div id="login_div">
+   <div id="login_div">
+
+      <h3>Admin Login:</h3>
+
          <div class="form-group">
           <label>Email</label>
           <input class="form-control"  type="email" name="email" id="email_field" required><br>
@@ -57,21 +51,39 @@
             <label>password</label>
             <input class="form-control" type="password" name="password" id="password_field" required><br>
           </div>
-        </div>
-
+        
           <p class="full">
             <button class="btn btn-info" onclick="login()" type="submit">Login</button>
           </p>
           <p><a href="javascript.html">go to Register</a></p>
-       
-      </form>
-    
-              </div>
-
-            </div>
-
-       </div>
+  </div>
 </div>
+
+<div id="user-div">
+    <h3>welcome user</h3>
+    <p id="user_para">welcme to firebae web login</p>
+    <button class="btn btn-info" onclick="Logout()" >Logout</button>
+
+
+      <div>
+
+
+
+
+      </div>
+
+
+ 
+   </div>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
 
 
 <!--footer -->
