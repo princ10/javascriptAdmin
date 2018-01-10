@@ -19,6 +19,7 @@
 
     document.getElementById("user-div").style.display = "block";
     document.getElementById("login_div").style.display = "none";
+    document.getElementById("wrapper").style.display = "block";
 
     var user = firebase.auth().currentUser;
 
@@ -36,6 +37,7 @@
     
       document.getElementById("user-div").style.display = "none";
       document.getElementById("login_div").style.display = "block";
+      document.getElementById("wrapper").style.display = "none";
 
     }
   });
@@ -66,3 +68,25 @@
     document.getElementById('LoginForm').reset();
 
   }
+//tools button javascript
+
+function openLeftMenu() {
+  document.getElementById("leftMenu").style.display = "block";
+}
+function closeLeftMenu() {
+  document.getElementById("leftMenu").style.display = "none";
+}
+
+function openRightMenu() {
+  document.getElementById("rightMenu").style.display = "block";
+}
+function closeRightMenu() {
+  document.getElementById("rightMenu").style.display = "none";
+}
+
+//side nav
+$("#menu-toggle").click(function(e) {
+  e.preventDefault();
+  $("#wrapper").toggleClass("active");
+});
+
