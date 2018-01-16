@@ -1,11 +1,11 @@
 // Initialize Firebase
  var config = {
-    apiKey: "AIzaSyB0cmAlCOxGaLnreJpCFxPfm714ihe5p2U",
-    authDomain: "javascriptform.firebaseapp.com",
-    databaseURL: "https://javascriptform.firebaseio.com",
-    projectId: "javascriptform",
+    apiKey: "AIzaSyA7J0AT8eTMp-nWTZ-valsb14IjDctTsCg",
+    authDomain: "demoproject-cdfc6.firebaseapp.com",
+    databaseURL: "https://demoproject-cdfc6.firebaseio.com",
+    projectId: "demoproject-cdfc6",
     storageBucket: "",
-    messagingSenderId: "183092384712"
+    messagingSenderId: "34621875864"
   };
 
   firebase.initializeApp(config);
@@ -89,4 +89,105 @@ $("#menu-toggle").click(function(e) {
   e.preventDefault();
   $("#wrapper").toggleClass("active");
 });
+
+// div for MeuList
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+      x.style.display = "block";
+  } else {
+      x.style.display = "none";
+  }
+}
+
+//Data base Menu List
+
+var rootRef = firebase.database().ref().child("data");
+
+rootRef.on("child_added", snap => {
+ // var itemid = snap.apiKey().val();
+  var itemname = snap.child("itemname").val();
+  var shortcode  = snap.child("shortcode").val();
+  var onlinedisplayname  = snap.child("onlinedisplayname").val();
+  var subcategory  = snap.child("subcategory").val();
+  var price  = snap.child("price").val();
+  var minimumpreparationtime  = snap.child("minimumpreparationtime").val();
+  var hsncode = snap.child("hsncode").val();
+  var description = snap.child("description").val();
+  var available  = snap.child("available").val();
+  var mealtype  = snap.child("mealtype").val();
+  var category  = snap.child("category").val();
+  $("#table_body").append( "<tr><td>" + itemname + "</td><td>" + shortcode + "</td><td>" + onlinedisplayname + "</td><td>" + subcategory + "</td><td>" + price + "</td><td>" + minimumpreparationtime + "</td><td>" + hsncode + "</td><td>" + description + "</td><td>" + available + "</td><td>" + mealtype + "</td><td>" + category + "</td><td><a onclick='edit(this)' href=''>Edit<a></td>"+"<td><a onclick='DelData(this)'  href=''>Delete<a></td></tr>");
+});
+
+//data remove from MenuList firebase
+
+ function DelData(x){
+
+   itemid =  x.parentNode.parentNode.rowIndex;
+  console.log(itemid);
+   var rootRef = firebase.database().ref('data/'+itemid);
+      rootRef.remove().then(function(){
+       console.log(rootRef);
+     console.log('remove successed');
+     });
+
+}
+
+//Edit Data form firebae Minu
+
+function edit()
+{
+  // itemid =  x.parentNode.parentNode.rowIndex;
+  // console.log(itemid);
+  // var rootRef = firebase.database().ref("data/"+itemid);
+  // rootRef.update({itemname:'Green Curry', shortcode: 'baked cheese broccol',onlinedisplayname: '',  subcategory: 'Appetizer', price: 200, minimumpreparationtime: '', hsncode: '', description: '',available: 'Yes', mealtype: 'veg', category: 'morning'});
+  // console.log("Success..");
+
+
+
+  var database = firebase.database();
+
+  database.ref('data').orderByChild('usertype').equalTo('Property Owner').on('value', function(snapshot){
+      if(snapshot.exists()){
+          var content = '';
+          snapshot.forEach(function(data){
+
+          var stat = data.val();
+          if (stat.status == 'Inactive'){
+              var val = data.val();
+              content +='<tr>';
+              content += '<td>' + val.itemname + '</td>';
+              content += '<td>' + val.shortcode + '</td>';
+              content += '<td>' + val.onlinedisplayname + '</td>';
+              content += '<td>' + val.subcategory + '</td>';
+              content += '<td>' + val.price + '</td>';
+              content += '<td>' + val.minimumpreparationtime + '</td>';
+              content += '<td>' + val.hsncode + '</td>';
+              content += '<td>' + val.description + '</td>';
+              content += '<td>' + val.available + '</td>';
+              content += '<td>' + val.mealtype + '</td>';
+              content += '<td>' + val.category + '</td>';
+              content += '<td><a  onclick="myFunction()">Update Status</a></td>';
+              content += '<td><a  onclick="myFunction()">Update Status</a></td>';
+              content += '</tr>';
+
+              }                       
+          });
+      }
+      $('#table_body').append(content);
+  });
+
+
+
+
+
+
+
+  alert('edit');
+
+
+
+}
+
 

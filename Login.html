@@ -62,34 +62,56 @@
                <li class="sidebar-brand"><a id="menu-toggle" href="#">Tools</a></li>
             </ul>
             <ul class="sidebar-nav" id="sidebar">
-              <li><a href="MenuList.html">Menu List</a></li>
-              
+              <li><a onclick="myFunction()">Menu List</a></li>
               <li><a>Captain</a></li>
               <li><a>KD</a></li>
             </ul>
-          </div>
+        </div>
               
           <!-- Page content -->
           <div id="page-content-wrapper">
             <!-- Keep all page content within the page-content inset div! -->
-            <div class="page-content inset">
-                <div class="row">
-                  <div class="col-md-12">
-                  <p class="well lead">BitplayLab</p>
-                  <div class="container">
-                    <div class="row"> <!-- div da esquerda -->
-                        <!-- Text input CNPJ e Razao Social-->
-                    
-                        </div> <!-- fim div da direita -->   <div class="col-sm-8 contact-form"> <!-- div da direita -->
-                           
-                    </div> <!-- fim div da esquerda -->
-                </div>
+                  <div class="page-content inset">
+              
+               
+                 
+                          
+                               <div style="overflow:scroll"; id="myDIV">
 
-                </div>
-              </div>
+                                    <table  class="table table-bordered" id="tbl_user_list" >
+                                        <thead>
+                                            <tr>
+                                              <th>ItemName</th>
+                                              <th>ShortCode</th> 
+                                              <th>OnlineDisplayName</th>
+                                              <th>SubCategory</th>
+                                              <th>Prince</th> 
+                                              <th>MinimumPreprationTime</th>
+                                              <th>HSNCode</th>
+                                              <th>Description</th> 
+                                              <th>Available</th>
+                                              <th>MealType</th>
+                                              <th>Category</th>
+                                              <th>Edit</th>
+                                              <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                    <tbody id="table_body" >
+
+                                        </tbody>
+                                    </table> 
+                               </div>
+                          
+                            
+
+
+                        
+
+              
+                      
+                      
+                   </div>
             </div>
-        </div>
-          
     </div>
 
 
