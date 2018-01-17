@@ -1,11 +1,11 @@
 // Initialize Firebase
- var config = {
-    apiKey: "AIzaSyAzwAEUaLxwa0NT6iBXPI-_BF3aQLGPEzs",
-    authDomain: "restaurants-64a32.firebaseapp.com",
-    databaseURL: "https://restaurants-64a32.firebaseio.com",
-    projectId: "restaurants-64a32",
+var config = {
+    apiKey: "AIzaSyA7J0AT8eTMp-nWTZ-valsb14IjDctTsCg",
+    authDomain: "demoproject-cdfc6.firebaseapp.com",
+    databaseURL: "https://demoproject-cdfc6.firebaseio.com",
+    projectId: "demoproject-cdfc6",
     storageBucket: "",
-    messagingSenderId: "651264921729"
+    messagingSenderId: "34621875864"
   };
 
   firebase.initializeApp(config);
@@ -102,7 +102,7 @@ function myFunction() {
 
 //Data base Menu List
 
-var rootRef = firebase.database().ref().child("menulist");
+var rootRef = firebase.database().ref().child("data");
 
 rootRef.on("child_added", snap => {
  // var itemid = snap.apiKey().val();
@@ -126,7 +126,7 @@ rootRef.on("child_added", snap => {
 
    itemid =  x.parentNode.parentNode.rowIndex;
   console.log(itemid);
-   var rootRef = firebase.database().ref('menulist/'+itemid);
+   var rootRef = firebase.database().ref('data/'+itemid);
       rootRef.remove().then(function(){
        console.log(rootRef);
      console.log('remove successed');
@@ -158,25 +158,3 @@ function edit()
       x.style.display = "none";
    }
   }
-
-// for caption table list
-
-
-var rootRef = firebase.database().ref().child("tables");
-
-rootRef.on("child_added", snap => {
- // var itemid = snap.apiKey().val();
-//  var status = snap.child("status").val();
-  var tableid  = snap.child("tableid").val();
- // var tablename  = snap.child("tablename").val();
- // var totalprice  = snap.child("totalprice").val();
- 
-  $("#table_body1").append("<tr style='background-color:#aaa'><td width=50%>" + tableid + "</td><tr>");
-
-});
-
-
-
-
-
-

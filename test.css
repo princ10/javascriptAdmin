@@ -1,11 +1,32 @@
-.alert{
-    text-align: center;
-    padding: 10 px;
-    background: #79c879;
-    color: #fff;
-    margin-bottom: 10px;
-    display: none;
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
 }
+#container {
+   min-height:100%;
+   position:relative;
+}
+#header {
+    background:#6cf;
+   padding:10px;
+}
+#body {
+   padding:10px;
+   padding-bottom:60px;   /* Height of the footer */
+}
+#footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;   /* Height of the footer */
+   background:#6cf;
+}
+
+
+
+
 
 .site-footer
 {
@@ -273,19 +294,4 @@ input[type="checkbox"]{
     padding-left: 1 0px ;
     text-align: center;
     margin-top: 0px;
-}
-
-/* css for girdview */
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media (max-width: 900px) {
-    .column  {
-        width: 50%;
-    }
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-    .column  {
-        width: 100%;
-    }
 }
