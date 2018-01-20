@@ -169,7 +169,7 @@ rootRef.on("child_added", snap => {
   document.getElementById('col').style.backgroundColor='green';
 
  }else if( status == '1' ){
-  document.getElementById('col').style.backgroundColor='red';
+  document.getElementById('col').style.backgroundColor='green';
 
  }
 
@@ -187,23 +187,49 @@ if (x.style.display === "none") {
    
     x.style.display = "none";
  }
+
 }
 
 
-var rootRef = firebase.database().ref().child("booked/tableid1/");
+var rootRef = firebase.database().ref().child("tables");
 
-rootRef.on("child_added", snap => {
-  //var itemid = snap.apiKey().val();
-  var captainName = snap.child("captainName").val();
-  var itemPrice  = snap.child("itemPrice").val();
-  var itemQuantity  = snap.child("itemQuantity").val();
-  var searchItem = snap.child("searchItem").val();
-  var tableNo = snap.child("tableNo").val();
- $("#table_body2").append("<tr id='col'><td>"+captainName +"</td><td>"+itemPrice +"</td><td>"+itemQuantity +"</td><td>"+searchItem +"</td><td>"+ tableNo  +"</td></tr>");
-}
-);
+ rootRef.on("child_added", snap => {
+
+  var tableid  = snap.child("tableid").val();
+
+  var rootRef = firebase.database().ref().child("booked/"+tableid);
+  rootRef.on("child_added", snap => {
+    var captainName = snap.child("captainName").val();
+   var itemPrice  = snap.child("itemPrice").val();
+    var itemQuantity  = snap.child("itemQuantity").val();
+    var searchItem = snap.child("searchItem").val();
+    var tableNo = snap.child("tableNo").val();
+  
+   $("#table_body2").append("<tr id='col'><td>"+captainName +"</td><td>"+itemPrice +"</td><td>"+itemQuantity +"</td><td>"+searchItem +"</td><td>"+ tableNo  +"</td></tr>");
+   }
+ );
+
+}) 
+
+ 
+
+//      var  tableid  = snap.child("tableid").val();
 
 
+
+//  var rootRef = firebase.database().ref("booked/"+tableid);
+//  rootRef.child("tableid1").once('value', gotUserData);
+//  function gotUserData(snapshot){
+//    snapshot.forEach(userSnapshot => {
+//     //  var k = userSnapshot.key;
+//      var captainName = userSnapshot.val().captainName;
+//      var itemPrice = userSnapshot.val().itemPrice;
+//      var itemQuantity = userSnapshot.val().itemQuantity;
+//      var searchItem = userSnapshot.val().searchItem;
+//      var tableNo = userSnapshot.val().tableNo;
+//            $('#table_body2').append("<tr id='col'><td>"+captainName +"</td><td>"+itemPrice +"</td><td>"+itemQuantity +"</td><td>"+searchItem +"</td><td>"+ tableNo  +"</td></tr>");
+//          });
+//        }
 
 
 
