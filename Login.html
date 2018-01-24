@@ -63,7 +63,7 @@
                <li class="sidebar-brand"><a id="menu-toggle" href="#">Tools</a></li>
             </ul>
             <ul class="sidebar-nav" id="sidebar">
-              <li><a onclick="myFunction()">Menu List</a></li>
+              <li><a  onclick="myFunction(this)">Menu List</a></li>
               <li><a onclick="myfunction()">Captain</a></li>
               <li><a onclick="mykdFunction()">KD</a></li>
             </ul>
@@ -74,7 +74,7 @@
             <!-- Keep all page content within the page-content inset div! -->
                   <div class="page-content inset">
                           <!-- this div for menuList -->
-                             <div style="overflow:scroll"; id="myDIV">
+                             <div style="overflow:scroll ; display:none"; id="myDIV">
                                     <table  class="table table-bordered" id="tbl_user_list" >
                                         <thead>
                                             <tr>
@@ -82,7 +82,7 @@
                                               <th>ShortCode</th> 
                                               <th>OnlineDisplayName</th>
                                               <th>SubCategory</th>
-                                              <th>Prince</th> 
+                                              <th>Price</th> 
                                               <th>MinimumPreprationTime</th>
                                               <th>HSNCode</th>
                                               <th>Description</th> 
@@ -95,11 +95,132 @@
                                         </thead>
                                         <tbody id="table_body" >
 
+
+                                                <div class="container">
+                                                       
+                                                        <!-- Trigger the modal with a button -->
+                                                        <!-- <button type="button" class="btn btn-info btn-lg" >Open Modal</button> -->
+                                                      
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="myModal" role="dialog"> 
+                                                          <div class="modal-dialog">
+                                                          
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Update ItemList</h4>
+                                                              </div>
+                                                              <div  id="upbody"  class="modal-body">
+
+                                                                    <form class="form-horizontal" action="/action_page.php">
+                                                                        <div class="form-group">
+                                                                          <label class="control-label col-sm-2" for="itemname">ItemName</label>
+                                                                          <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" id="itemname" placeholder=" Enter ItemName">
+                                                                          </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                          <label class="control-label col-sm-2" for="shortcode">ShortCode</label>
+                                                                          <div class="col-sm-10"> 
+                                                                            <input type="text" class="form-control" id="shortcode" placeholder="Enter ShortCode">
+                                                                          </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                                <label class="control-label col-sm-2" for="onlinedisplayname">OnlineDisplayName</label>
+                                                                                <div class="col-sm-10"> 
+                                                                                  <input type="text" class="form-control" id="onlinedisplayname" placeholder="Enter OnlineDisplayName">
+                                                                           </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                                    <label class="control-label col-sm-2" for="subcategory">SubCategory</label>
+                                                                                    <div class="col-sm-10"> 
+                                                                                      <input type="text" class="form-control" id="subcategory" placeholder="Enter SubCategory">
+                                                                            </div>
+                                                                         </div>
+                                                                         <div class="form-group">
+                                                                                <label class="control-label col-sm-2" for="price">Price</label>
+                                                                                <div class="col-sm-10"> 
+                                                                                  <input type="text" class="form-control" id="price" placeholder="Enter Price">
+                                                                                </div>
+                                                                              </div>
+                                                                              <div class="form-group">
+                                                                                    <label class="control-label col-sm-2" for="minimumpreprationtime">MinimumPreprationTime</label>
+                                                                                    <div class="col-sm-10"> 
+                                                                                      <input type="text" class="form-control" id="minimumpreprationtime" placeholder="Enter MinimumPreprationTime">
+                                                                                    </div>
+                                                                                  </div>
+                                                                                  <div class="form-group">
+                                                                                        <label class="control-label col-sm-2" for="hsncode">HSNCode</label>
+                                                                                        <div class="col-sm-10"> 
+                                                                                          <input type="text" class="form-control" id="hsncode" placeholder="Enter HSNCode">
+                                                                                        </div>
+                                                                                      </div>
+                                                                                      <div class="form-group">
+                                                                                            <label class="control-label col-sm-2" for="description">Description</label>
+                                                                                            <div class="col-sm-10"> 
+                                                                                              <input type="text" class="form-control" id="description" placeholder="Enter Description">
+                                                                                            </div>
+                                                                                          </div>
+
+                                                                                              <div class="form-group">
+                                                                                                    <label class="control-label col-sm-2" for="available">Available</label>
+                                                                                                    <div class="col-sm-10"> 
+                                                                                                      <input type="text" class="form-control" id="available" placeholder="Enter Available">
+                                                                                                    </div>
+                                                                                                  </div>
+
+                                                                                                  <div class="form-group">
+                                                                                                        <label class="control-label col-sm-2" for="mealtype">MealType</label>
+                                                                                                        <div class="col-sm-10"> 
+                                                                                                          <input type="text" class="form-control" id="mealtype" placeholder="Enter MealType ">
+                                                                                                        </div>
+                                                                                                      </div>
+
+                                                                                                      <div class="form-group">
+                                                                                                            <label class="control-label col-sm-2" for="category">Category</label>
+                                                                                                            <div class="col-sm-10"> 
+                                                                                                              <input type="text" class="form-control" id="category" placeholder="Enter Category">
+                                                                                                            </div>
+                                                                                                          </div>
+
+                                                                        <div class="form-group"> 
+                                                                          <div class="col-sm-offset-2 col-sm-10">
+                                                                            <button type="submit" class="btn btn-default">Submit</button>
+                                                                          </div>
+                                                                        </div>
+                                                                      </form>
+                                                                            
+
+
+                                                              </div>
+                                                              <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                              </div>
+                                                            </div>
+                                                            
+                                                          </div>
+                                                        </div>
+                                                        
+                                                      </div>
+                                                      
+
+
+
+
+
+
+
+
+
+
+
+                                       
                                         </tbody>
                                     </table> 
                             </div>
 
-                            <div style="overflow:scroll"; id="mydiv">
+                            <div style="overflow:scroll ;display:none "; id="mydiv">
                                     <table  class="table">
                                         <thead>
                                             <tr>
@@ -121,7 +242,7 @@
                             </div>
 
 
-                            <div style="overflow:scroll"; id="kddiv">
+                            <div style="overflow:scroll; display:none"; id="kddiv">
                                 <table  class="table">
                                     <thead>
                                         <tr>
@@ -140,6 +261,22 @@
                                     </tbody>
                                 </table> 
                         </div>
+                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -150,6 +287,8 @@
                     </div>
             </div>
     </div>
+
+
 
 
    
@@ -181,7 +320,6 @@
 
 
    
-
 
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
     <script src="login.js"></script>
