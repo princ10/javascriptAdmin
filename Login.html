@@ -21,7 +21,7 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#"><img src="//img1.wsimg.com/isteam/ip/625d6c06-640e-4bb0-a766-17baec0c559d/logo/77efa591-2cbb-4f47-9bcb-9241db8e342d.jpg/:/rs=h:125" height="100" ></a>
+            <a class="navbar-brand" href="#"><img src="//img1.wsimg.com/isteam/ip/625d6c06-640e-4bb0-a766-17baec0c559d/logo/77efa591-2cbb-4f47-9bcb-9241db8e342d.jpg/:/rs=h:125" height="50" ></a>
           </div>
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
@@ -35,10 +35,10 @@
                    <div  class='btn-toolbar pull-right'  id="user-div">
 
                     <div class="row-fluid">
-                    
-                      <div class="span4 text-left"> <h3 style="color:aliceblue" >welcome user </h3></div>
+<!--                     
+                       <div class="span4 text-left"> <h3 style="color:aliceblue" >welcome user </h3></div> -->
                       <div class="span4 text-center"> <p style="color:aliceblue" id="user_para">welcme to firebae web login</p></div>
-                      <div class="span4 text-right"></div> <button  style="position:relative" class="btn btn-info" onclick="Logout()" >Logout</button></div>
+                      <div class="span4 text-right"></div> <button  style="position:relative" class="btn-info btn pull-right" onclick="Logout()" >Logout</button></div>
                     </div>
                 
                      </div>
@@ -108,12 +108,12 @@
                                                             <!-- Modal content-->
                                                             <div class="modal-content">
                                                               <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>  
                                                                 <h4 class="modal-title">Update ItemList</h4>
                                                               </div>
-                                                              <div  id="upbody"  class="modal-body">
+                                                              <div   class="modal-body">
 
-                                                                    <form class="form-horizontal" action="/action_page.php">
+                                                                    <form id="upbody"  class="form-horizontal" action="/action_page.php">
                                                                         <div class="form-group">
                                                                           <label class="control-label col-sm-2" for="itemname">ItemName</label>
                                                                           <div class="col-sm-10">
@@ -232,10 +232,6 @@
                                             </tr>
                                         </thead>
                                         <tbody id="table_body1" >
-
-
-
-                                        
 
                                         </tbody>
                                     </table> 

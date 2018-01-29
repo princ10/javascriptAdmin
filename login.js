@@ -147,53 +147,53 @@ rootRef.on("child_added", snap => {
 // data edit form menulist
      function edit(x){
 
-      var rootRef = firebase.database().ref('/menulist/10');
-      rootRef.on("value", function(snapshot) {
-         x =   snapshot.val();
-         console.log(x);
+       var rootRef = firebase.database().ref('/menulist/10');
+       rootRef.on("value", function(snapshot) {
 
-      }, function (errorObject) {
-        console.log("The read failed: " + errorObject);
+          console.log( snapshot.val());
 
-    document.getElementById("itemname").value = x.itemname;
-     document.getElementById("shortcode").value = x.shortcode;
-     document.getElementById("onlinedisplayname").value = x.onlinedisplayname;
-     document.getElementById("subcategory").value = x.subcategory;
-     document.getElementById("price").value = x.price;
-     document.getElementById("minimumpreprationtime").value = x.minimumpreprationtime;
-     document.getElementById("hsncode").value = x.hsncode;
-     document.getElementById("description").value = x.description;
-     document.getElementById("available").value = x.available;
-     document.getElementById("mealtype").value = x.mealtype;
-     document.getElementById("category").value = x.category;
-     console.log(itemname);
+       }, function (errorObject) {
+         console.log("The read failed: " + errorObject);
+       
 
-        $("#upbody").append("<tr><td>" + x.itemname + "</td><td>" + x.shortcode + "</td><td>" + x.onlinedisplayname + "</td><td>" + x.subcategory + "</td><td>" + x.price + "</td><td>" + x.minimumpreparationtime + "</td><td>" + x.hsncode + "</td><td>" + x.description + "</td><td>" + x.available + "</td><td>" + x.mealtype + "</td><td>" + x.category + "</td></tr>");
-
-      });
-
+      document.getElementById('itemname').val = snapshot.val();
+      document.getElementById('shortcode').innerHtml = shortcode;
+      document.getElementById('onlinedisplayname').innerHtml = onlinedisplayname;
+      document.getElementById('subcategory').innerHtml = subcategory;
+      document.getElementById('price').innerHtml = price;
+      document.getElementById('minimumpreprationtime').innerHtml = minimumpreprationtime;
+      document.getElementById('hsncode').innerHtml = hsncode;
+      document.getElementById('description').innerHtml = description;
+      document.getElementById('available').innerHtml = available;
+      document.getElementById('mealtype').innerHtml = mealtype;
+      document.getElementById('category').innerHtml = category;
+     
+         $("#upbody").append();
+       });
 
 
-    //   var rootRef = firebase.database().ref('/menulist/10');
+
+    //    var rootRef = firebase.database().ref('/menulist/10');
+       
       
-    //    rootRef.on("child_added", snap => {
+    //     rootRef.on("child_added", snap => {
  
-    //    var itemname = snap.child("itemname").val();
-    //    var shortcode  = snap.child("shortcode").val();
-    //    var onlinedisplayname  = snap.child("onlinedisplayname").val();
-    //    var subcategory  = snap.child("subcategory").val();
-    //    var price  = snap.child("price").val();
-    //    var minimumpreparationtime  = snap.child("minimumpreparationtime").val();
-    //   var hsncode = snap.child("hsncode").val();
-    //    var description = snap.child("description").val();
-    //    var available  = snap.child("available").val();
-    //    var mealtype  = snap.child("mealtype").val();
-    //   var category  = snap.child("category").val();
+    //     var itemname = snap.child("itemname").val();
+    //     var shortcode  = snap.child("shortcode").val();
+    //     var onlinedisplayname  = snap.child("onlinedisplayname").val();
+    //     var subcategory  = snap.child("subcategory").val();
+    //     var price  = snap.child("price").val();
+    //     var minimumpreparationtime  = snap.child("minimumpreparationtime").val();
+    //    var hsncode = snap.child("hsncode").val();
+    //     var description = snap.child("description").val();
+    //     var available  = snap.child("available").val();
+    //     var mealtype  = snap.child("mealtype").val();
+    //    var category  = snap.child("category").val();
 
-    //    console.log(itemname+' '+shortcode+' '+onlinedisplayname+' '+subcategory+' '+price+' '+minimumpreparationtime+' '+hsncode+' '+description+' '+available+' '+mealtype+' '+category);
+    // //    console.log(itemname+' '+shortcode+' '+onlinedisplayname+' '+subcategory+' '+price+' '+minimumpreparationtime+' '+hsncode+' '+description+' '+available+' '+mealtype+' '+category);
 
-    //  // $("#upbody").append( "<tr><td>" + itemname + "</td><td>" + shortcode + "</td><td>" + onlinedisplayname + "</td><td>" + subcategory + "</td><td>" + price + "</td><td>" + minimumpreparationtime + "</td><td>" + hsncode + "</td><td>" + description + "</td><td>" + available + "</td><td>" + mealtype + "</td><td>" + category + "</td></tr>");
-    //  });
+    //  $("#upbody").append( "<tr><td>" + itemname + "</td><td>" + shortcode + "</td><td>" + onlinedisplayname + "</td><td>" + subcategory + "</td><td>" + price + "</td><td>" + minimumpreparationtime + "</td><td>" + hsncode + "</td><td>" + description + "</td><td>" + available + "</td><td>" + mealtype + "</td><td>" + category + "</td></tr>");
+    //   });
 
  }
 
