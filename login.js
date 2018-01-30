@@ -147,55 +147,51 @@ rootRef.on("child_added", snap => {
 // data edit form menulist
      function edit(x){
 
-       var rootRef = firebase.database().ref('/menulist/10');
-       rootRef.on("value", function(snapshot) {
-
+       itemid =  x.parentNode.parentNode.rowIndex+1;
+       var rootRef = firebase.database().ref('/menulist/'+itemid);
+           rootRef.on("value", function(snapshot) {
           console.log( snapshot.val());
+          document.getElementById('itemname').value = snapshot.val().itemname;
+          document.getElementById('shortcode').value = snapshot.val().shortcode;
+          document.getElementById('onlinedisplayname').value = snapshot.val().onlinedisplayname;
+          document.getElementById('subcategory').value = snapshot.val().subcategory;
+          document.getElementById('price').value = snapshot.val().price;
+          document.getElementById('minimumpreparationtime').value = snapshot.val().minimumpreparationtime;
+          document.getElementById('hsncode').value = snapshot.val().hsncode;
+          document.getElementById('description').value = snapshot.val().description;
+          document.getElementById('available').value = snapshot.val().available;
+          document.getElementById('mealtype').value = snapshot.val().mealtype;
+          document.getElementById('category').value = snapshot.val().category;
 
-       }, function (errorObject) {
-         console.log("The read failed: " + errorObject);
-       
-
-      document.getElementById('itemname').val = snapshot.val();
-      document.getElementById('shortcode').innerHtml = shortcode;
-      document.getElementById('onlinedisplayname').innerHtml = onlinedisplayname;
-      document.getElementById('subcategory').innerHtml = subcategory;
-      document.getElementById('price').innerHtml = price;
-      document.getElementById('minimumpreprationtime').innerHtml = minimumpreprationtime;
-      document.getElementById('hsncode').innerHtml = hsncode;
-      document.getElementById('description').innerHtml = description;
-      document.getElementById('available').innerHtml = available;
-      document.getElementById('mealtype').innerHtml = mealtype;
-      document.getElementById('category').innerHtml = category;
-     
-         $("#upbody").append();
        });
+      }
+
+  function MenuListUpdate(){
+    var rootRef = firebase.database().ref();
+    itemname = document.getElementById('itemname').value
+    shortcode = document.getElementById('shortcode').value
+    onlinedisplayname = document.getElementById('onlinedisplayname').value
+    subcategory = document.getElementById('subcategory').value
+    price = document.getElementById('price').value
+    minimumpreparationtime = document.getElementById('minimumpreparationtime').value
+    hsncode = document.getElementById('hsncode').value
+    description = document.getElementById('description').value
+    available = document.getElementById('available').value
+    mealtype = document.getElementById('mealtype').value
+    category = document.getElementById('category').value
+
+    data = {itemname,shortcode,onlinedisplayname,subcategory,price,minimumpreparationtime,hsncode,description,available,mealtype,category}
+    
+    rootRef.child('menulist/10').update(data)
+
+  
+
+  }
 
 
 
-    //    var rootRef = firebase.database().ref('/menulist/10');
-       
-      
-    //     rootRef.on("child_added", snap => {
- 
-    //     var itemname = snap.child("itemname").val();
-    //     var shortcode  = snap.child("shortcode").val();
-    //     var onlinedisplayname  = snap.child("onlinedisplayname").val();
-    //     var subcategory  = snap.child("subcategory").val();
-    //     var price  = snap.child("price").val();
-    //     var minimumpreparationtime  = snap.child("minimumpreparationtime").val();
-    //    var hsncode = snap.child("hsncode").val();
-    //     var description = snap.child("description").val();
-    //     var available  = snap.child("available").val();
-    //     var mealtype  = snap.child("mealtype").val();
-    //    var category  = snap.child("category").val();
 
-    // //    console.log(itemname+' '+shortcode+' '+onlinedisplayname+' '+subcategory+' '+price+' '+minimumpreparationtime+' '+hsncode+' '+description+' '+available+' '+mealtype+' '+category);
 
-    //  $("#upbody").append( "<tr><td>" + itemname + "</td><td>" + shortcode + "</td><td>" + onlinedisplayname + "</td><td>" + subcategory + "</td><td>" + price + "</td><td>" + minimumpreparationtime + "</td><td>" + hsncode + "</td><td>" + description + "</td><td>" + available + "</td><td>" + mealtype + "</td><td>" + category + "</td></tr>");
-    //   });
-
- }
 
 // div for caption
 
