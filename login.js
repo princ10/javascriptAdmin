@@ -181,8 +181,8 @@ rootRef.on("child_added", snap => {
     category = document.getElementById('category').value
 
     data = {itemname,shortcode,onlinedisplayname,subcategory,price,minimumpreparationtime,hsncode,description,available,mealtype,category}
-    
-    rootRef.child('menulist/10').update(data)
+    itemid =  x.parentNode.parentNode.rowIndex+1;
+    rootRef.child('menulist/'+itemid).update(data)
 
   
 
@@ -224,7 +224,12 @@ rootRef.on("child_added", snap => {
   var tableid  = snap.child("tableid").val();
   var tablename  = snap.child("tablename").val();
   var totalprice  = snap.child("totalprice").val();
- $("#table_body1").append("<tr id='col'><td>"+status +"</td><td>"+tableid +"</td><td>"+tablename +"</td><td>"+totalprice +"</td></tr>");
+ $("#table_body1").append("<tr><td><button onclick='myButton(this)'href=''>"+tablename +"</button></td>></tr>");
+
+
+ function myButton(x){
+   alert('hello');
+ }
 
 
  //itemid =  x.parentNode.parentNode.rowIndex;
