@@ -126,7 +126,7 @@ rootRef.on("child_added", snap => {
   var available  = snap.child("available").val();
   var mealtype  = snap.child("mealtype").val();
   var category  = snap.child("category").val();
-  $("#table_body").append( "<tr><td>" + itemname + "</td><td>" + shortcode + "</td><td>" + onlinedisplayname + "</td><td>" + subcategory + "</td><td>" + price + "</td><td>" + minimumpreparationtime + "</td><td>" + hsncode + "</td><td>" + description + "</td><td>" + available + "</td><td>" + mealtype + "</td><td>" + category + "</td><td><a  data-toggle='modal' data-target='#myModal'   onclick='edit(this)' href=''>Edit<a></td>"+"<td><a onclick='DelData(this)'  href=''>Delete<a></td></tr>");
+  $("#table_body").append( "<tr><td>" + itemname + "</td><td>" + shortcode + "</td><td>" + onlinedisplayname + "</td><td>" + subcategory + "</td><td>" + price + "</td><td>" + minimumpreparationtime + "</td><td>" + hsncode + "</td><td>" + description + "</td><td>" + available + "</td><td>" + mealtype + "</td><td>" + category + "</td><td><a  data-toggle='modal' data-target='#myModal'  onclick='edit(this)' href=''>Edit<a></td>"+"<td><a onclick='DelData(this)'  href=''>Delete<a></td></tr>");
 });
   
 //data remove from MenuList firebase
@@ -147,8 +147,8 @@ rootRef.on("child_added", snap => {
 // data edit form menulist
      function edit(x){
 
-       itemid =  x.parentNode.parentNode.rowIndex+1;
-       var rootRef = firebase.database().ref('/menulist/'+itemid);
+      // itemid =  x.parentNode.parentNode.rowIndex+1;
+       var rootRef = firebase.database().ref('/menulist/10');
            rootRef.on("value", function(snapshot) {
           console.log( snapshot.val());
           document.getElementById('itemname').value = snapshot.val().itemname;
@@ -181,8 +181,8 @@ rootRef.on("child_added", snap => {
     category = document.getElementById('category').value
 
     data = {itemname,shortcode,onlinedisplayname,subcategory,price,minimumpreparationtime,hsncode,description,available,mealtype,category}
-    itemid =  x.parentNode.parentNode.rowIndex+1;
-    rootRef.child('menulist/'+itemid).update(data)
+   // itemid =  x.parentNode.parentNode.rowIndex+1;
+    rootRef.child('menulist/10').update(data)
 
   
 
@@ -224,13 +224,7 @@ rootRef.on("child_added", snap => {
   var tableid  = snap.child("tableid").val();
   var tablename  = snap.child("tablename").val();
   var totalprice  = snap.child("totalprice").val();
- $("#table_body1").append("<tr><td><button onclick='myButton(this)'href=''>"+tablename +"</button></td>></tr>");
-
-
- function myButton(x){
-   alert('hello');
- }
-
+ $("#table_body1").append("<tr><td><button      data-toggle='modal' data-target='#Modal'   onclick='mybutton(this)' href=''>"+tablename +"</button></td></tr>");
 
  //itemid =  x.parentNode.parentNode.rowIndex;
 
@@ -244,6 +238,19 @@ rootRef.on("child_added", snap => {
  }
 
 });
+
+function mybutton(x){
+
+  var rootRef = firebase.database().ref('/tables/tableid1');
+  rootRef.on("value", function(snapshot) {
+ console.log( snapshot.val());
+ document.getElementById('status').value = snapshot.val().status;
+ document.getElementById('tableid').value = snapshot.val().tableid;
+ document.getElementById('tablename').value = snapshot.val().tablename;
+ document.getElementById('totalprice').value = snapshot.val().totalprice;
+});
+
+}
 
 
 
