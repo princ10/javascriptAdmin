@@ -128,28 +128,53 @@ rootRef.on("child_added", snap => {
   var category  = snap.child("category").val();
   $("#table_body").append( "<tr><td>" + itemname + "</td><td>" + shortcode + "</td><td>" + onlinedisplayname + "</td><td>" + subcategory + "</td><td>" + price + "</td><td>" + minimumpreparationtime + "</td><td>" + hsncode + "</td><td>" + description + "</td><td>" + available + "</td><td>" + mealtype + "</td><td>" + category + "</td><td><a  data-toggle='modal' data-target='#myModal'  onclick='edit(this)' href=''>Edit<a></td>"+"<td><a onclick='DelData(this)'  href=''>Delete<a></td></tr>");
 });
-  
+
 //data remove from MenuList firebase
 
- function DelData(x){
+function DelData(x){
 
-   itemid =  x.parentNode.parentNode.rowIndex;
-  console.log(itemid);
-   var rootRef = firebase.database().ref('menulist/'+itemid);
-      rootRef.remove().then(function(){
-      
-       console.log(rootRef);
-     console.log('remove successed');
-     });  
+  var rootRef = firebase.database().ref().child("menulist/");
 
+  rootRef.on("child_added", snap => {
+
+      var k = snap.key;
+      console.log(k);
+
+
+      var ref = firebase.database(); //root reference to your data
+      ref.orderByChild('user_id').equalTo('k')
+          .once('value').then(function(snapshot) {
+              snapshot.forEach(function(childSnapshot) {
+              //remove each child
+              ref.child(childSnapshot.key).remove();
+          });
+      });
+
+
+
+
+
+      // var rootRef = firebase.database().ref('menulist/'+k);
+
+      //  rootRef.remove().then(function(){
+
+      //   console.log(rootRef);
+      //   console.log('remove successed');
+
+      // });  
+    });
+  
 }
+
+
+
 
 // data edit form menulist
      function edit(x){
 
       // itemid =  x.parentNode.parentNode.rowIndex+1;
        var rootRef = firebase.database().ref('/menulist/10');
-           rootRef.on("value", function(snapshot) {
+          rootRef.on("value", function(snapshot) {
           console.log( snapshot.val());
           document.getElementById('itemname').value = snapshot.val().itemname;
           document.getElementById('shortcode').value = snapshot.val().shortcode;
@@ -184,7 +209,6 @@ rootRef.on("child_added", snap => {
    // itemid =  x.parentNode.parentNode.rowIndex+1;
     rootRef.child('menulist/10').update(data)
 
-  
 
   }
 
@@ -226,17 +250,6 @@ rootRef.on("child_added", snap => {
   var totalprice  = snap.child("totalprice").val();
  $("#table_body1").append("<tr><td><button      data-toggle='modal' data-target='#Modal'   onclick='mybutton(this)' href=''>"+tablename +"</button></td></tr>");
 
- //itemid =  x.parentNode.parentNode.rowIndex;
-
- if(status === '0'){
-
-  document.getElementById('col').style.backgroundColor='green';
-
- }else if( status == '1' ){
-  document.getElementById('col').style.backgroundColor='green';
-
- }
-
 });
 
 function mybutton(x){
@@ -274,6 +287,7 @@ if (x.style.display === "none") {
 }
 
 
+
 var rootRef = firebase.database().ref().child("tables");
 
  rootRef.on("child_added", snap => {
@@ -282,15 +296,21 @@ var rootRef = firebase.database().ref().child("tables");
 
   var rootRef = firebase.database().ref().child("booked/"+tableid);
   rootRef.on("child_added", snap => {
-    var captainName = snap.child("captainName").val();
-   var itemPrice  = snap.child("itemPrice").val();
-    var itemQuantity  = snap.child("itemQuantity").val();
-    var searchItem = snap.child("searchItem").val();
-    var tableNo = snap.child("tableNo").val();
+    var k = snap.key;
   
-   $("#table_body2").append("<tr id='col'><td>"+captainName +"</td><td>"+itemPrice +"</td><td>"+itemQuantity +"</td><td>"+searchItem +"</td><td>"+ tableNo  +"</td></tr>");
-   }
- );
+    var rootRef = firebase.database().ref().child("booked/"+tableid).child(""+k);
+    rootRef.on("child_added", snap => {
+      var captainName = snap.child("captainName").val();
+      var itemPrice  = snap.child("itemPrice").val();
+       var itemQuantity  = snap.child("itemQuantity").val();
+       var searchItem = snap.child("searchItem").val();
+       var tableNo = snap.child("tableNo").val();
+     
+      $("#table_body2").append("<tr id='col'><td>"+captainName +"</td><td>"+itemPrice +"</td><td>"+itemQuantity +"</td><td>"+searchItem +"</td><td>"+ tableNo  +"</td></tr>");
+      }
+      );
+    }
+  );
 
 }) 
 
