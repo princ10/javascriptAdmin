@@ -1,15 +1,15 @@
 .alert{
     text-align: center;
     padding: 10 px;
-    background: #79c879;
-    color: #fff;
+    background: rgb(19, 26, 128);
+    color: rgb(255, 255, 255);
     margin-bottom: 10px;
     display: none;
 }
 
 .site-footer
 {
-    background-color: #222;
+    background-color: rgb(19, 26, 128);
     color: #fff;
     margin-top:30px;
     padding-top:30px;
@@ -71,7 +71,7 @@ input[type="checkbox"]{
 /*tool menu Css*/
 .dropbtn {
     background-color: #4CAF50;
-    color: white;
+    color:  rgb(19, 26, 128);
     padding: 16px;
     font-size: 16px;
     border: none;
@@ -79,7 +79,7 @@ input[type="checkbox"]{
 }
 
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
+    background-color: rgb(19, 26, 128);
 }
 
 .dropdown {
@@ -93,12 +93,12 @@ input[type="checkbox"]{
     background-color: #f9f9f9;
     min-width: 160px;
     overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgb(19, 26, 128);
     z-index: 1;
 }
 
 .dropdown-content a {
-    color: black;
+    color: rgb(19, 26, 128);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -125,7 +125,7 @@ input[type="checkbox"]{
     margin-left: -150px;
     left: 70px;
     width: 150px;
-    background: #222;
+    background: rgb(19, 26, 128);
     position: fixed;
     height: 100%;
     z-index: 10000;
@@ -163,7 +163,7 @@ input[type="checkbox"]{
     float: left;
     text-decoration: none;
     width: 150px;
-    background: #252525;
+    background: rgb(19, 26, 128);
     border-top: 1px solid #373737;
     border-bottom: 1px solid #1A1A1A;
     -webkit-transition: background .5s;
@@ -289,3 +289,8 @@ input[type="checkbox"]{
         width: 100%;
     }
 }
+
+
+
+
+

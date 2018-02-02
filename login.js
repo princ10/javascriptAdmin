@@ -133,39 +133,12 @@ rootRef.on("child_added", snap => {
 
 function DelData(x){
 
-  var rootRef = firebase.database().ref().child("menulist/");
-
-  rootRef.on("child_added", snap => {
-
-      var k = snap.key;
-      console.log(k);
-
-
-      var ref = firebase.database(); //root reference to your data
-      ref.orderByChild('user_id').equalTo('k')
-          .once('value').then(function(snapshot) {
-              snapshot.forEach(function(childSnapshot) {
-              //remove each child
-              ref.child(childSnapshot.key).remove();
-          });
-      });
-
-
-
-
-
-      // var rootRef = firebase.database().ref('menulist/'+k);
-
-      //  rootRef.remove().then(function(){
-
-      //   console.log(rootRef);
-      //   console.log('remove successed');
-
-      // });  
-    });
   
-}
+  // deleteSth(id){
+  //   firebase.database().ref('/BFunctions/').child().remove();
+  // }
 
+}
 
 
 
