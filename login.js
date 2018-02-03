@@ -106,6 +106,7 @@ function myFunction(x) {
        x.style.display = "block";
        y.style.display = "none";
        z.style.display = "none";
+      
     }
 }
 
@@ -133,12 +134,25 @@ rootRef.on("child_added", snap => {
 
 function DelData(x){
 
-  
-  // deleteSth(id){
-  //   firebase.database().ref('/BFunctions/').child().remove();
-  // }
 
+var table = document.getElementById("table_body"),rIndex;
+for(var i = 0; i < table.rows.length;i++)
+{
+  table.rows[i].onclick = function()
+  {
+    rIndex = this.rowIndex;
+    console.log(rIndex);
+    var rootRef = firebase.database().ref().child("menulist/"+(rIndex-1));
+    rootRef.remove().then(function() {
+    
+      console.log("remove successed");
+    }); 
+    
+  }
+ }
 }
+
+
 
 
 
@@ -221,22 +235,25 @@ rootRef.on("child_added", snap => {
   var tableid  = snap.child("tableid").val();
   var tablename  = snap.child("tablename").val();
   var totalprice  = snap.child("totalprice").val();
- $("#table_body1").append("<tr><td><button      data-toggle='modal' data-target='#Modal'   onclick='mybutton(this)' href=''>"+tablename +"</button></td></tr>");
+ $("#table_body1").append("<tr><td><button   data-toggle='modal' data-target='#Modal'   onclick='mybutton(this)' href=''>"+tablename +"</button></td></tr>");
 
 });
 
 function mybutton(x){
 
-  var rootRef = firebase.database().ref('/tables/tableid1');
-  rootRef.on("value", function(snapshot) {
- console.log( snapshot.val());
- document.getElementById('status').value = snapshot.val().status;
- document.getElementById('tableid').value = snapshot.val().tableid;
- document.getElementById('tablename').value = snapshot.val().tablename;
- document.getElementById('totalprice').value = snapshot.val().totalprice;
-});
+   
 
-}
+     var rootRef = firebase.database().ref('tables/tableid1');
+      rootRef.on("value", function(snapshot) {
+    console.log( snapshot.val());
+    document.getElementById('status').value = snapshot.val().status;
+    document.getElementById('tableid').value = snapshot.val().tableid;
+    document.getElementById('tablename').value = snapshot.val().tablename;
+    document.getElementById('totalprice').value = snapshot.val().totalprice;
+   });
+
+  }
+
 
 
 
@@ -246,7 +263,6 @@ function  mykdFunction(){
   var x = document.getElementById("kddiv");
   var y = document.getElementById("myDIV")
   var z = document.getElementById("mydiv")
-  
 if (x.style.display === "none") {
     x.style.display = "block";
     y.style.display = "none";
