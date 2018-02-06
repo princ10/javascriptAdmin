@@ -112,7 +112,7 @@ function myFunction(x) {
 
 //Data base Menu List
 
-var rootRef = firebase.database().ref().child("menulist");
+var rootRef = firebase.database().ref().child("menulist");  
 
 rootRef.on("child_added", snap => {
  // var itemid = snap.apiKey().val();
@@ -236,21 +236,43 @@ rootRef.on("child_added", snap => {
   var tablename  = snap.child("tablename").val();
   var totalprice  = snap.child("totalprice").val();
  $("#table_body1").append("<tr><td><button   data-toggle='modal' data-target='#Modal'   onclick='mybutton(this)' href=''>"+tablename +"</button></td></tr>");
-
+ 
 });
 
 function mybutton(x){
 
+  var rootRef = firebase.database().ref().child("tables");
+
+
+
+
+  rootRef.orderByKey().on("child_added", function(snapshot) {
+  console.log(snapshot.key);
+});
+
+
+
+
+
+
+  rootRef.on("child_added", snap => {
+    var tableid  = snap.child("tableid").val();
+
+     console.log(tableid);
+     
+     var rootRef = firebase.database().ref('tables/'+tableid);
    
 
-     var rootRef = firebase.database().ref('tables/tableid1');
       rootRef.on("value", function(snapshot) {
-    console.log( snapshot.val());
+      console.log( snapshot.val());
     document.getElementById('status').value = snapshot.val().status;
     document.getElementById('tableid').value = snapshot.val().tableid;
     document.getElementById('tablename').value = snapshot.val().tablename;
     document.getElementById('totalprice').value = snapshot.val().totalprice;
    });
+
+
+  })
 
   }
 
