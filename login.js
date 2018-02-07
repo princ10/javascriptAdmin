@@ -112,10 +112,16 @@ function myFunction(x) {
 
 //Data base Menu List
 
-var rootRef = firebase.database().ref().child("menulist");  
+
+var rootRef = firebase.database().ref().child("menulist/");  
 
 rootRef.on("child_added", snap => {
- // var itemid = snap.apiKey().val();
+ 
+
+  var k = snap.key;
+
+ // console.log(k);
+  // var itemid = snap.key();
   var itemname = snap.child("itemname").val();
   var shortcode  = snap.child("shortcode").val();
   var onlinedisplayname  = snap.child("onlinedisplayname").val();
@@ -127,40 +133,37 @@ rootRef.on("child_added", snap => {
   var available  = snap.child("available").val();
   var mealtype  = snap.child("mealtype").val();
   var category  = snap.child("category").val();
-  $("#table_body").append( "<tr><td>" + itemname + "</td><td>" + shortcode + "</td><td>" + onlinedisplayname + "</td><td>" + subcategory + "</td><td>" + price + "</td><td>" + minimumpreparationtime + "</td><td>" + hsncode + "</td><td>" + description + "</td><td>" + available + "</td><td>" + mealtype + "</td><td>" + category + "</td><td><a  data-toggle='modal' data-target='#myModal'  onclick='edit(this)' href=''>Edit<a></td>"+"<td><a onclick='DelData(this)'  href=''>Delete<a></td></tr>");
+  $("#table_body").append( "<tr><td>" + itemname + "</td><td>" + shortcode + "</td><td>" + onlinedisplayname + 
+  "</td><td>" + subcategory + "</td><td>" + price + "</td><td>" + minimumpreparationtime + "</td><td>" + hsncode + "</td><td>" + description + "</td><td>"
+   + available + "</td><td>" + mealtype + "</td><td>" + category + 
+   "</td><td><a  data-toggle='modal' data-target='#myModal' id='"+k+"' onclick='edit(this.id)' href=''>Edit<a></td>"+"<td><a id='"+k+"' onclick='DelData(this.id)'  href=''>Delete<a></td></tr>");
 });
+
 
 //data remove from MenuList firebase
 
-function DelData(x){
+function DelData(id){
 
+  console.log(id);
 
-var table = document.getElementById("table_body"),rIndex;
-for(var i = 0; i < table.rows.length;i++)
-{
-  table.rows[i].onclick = function()
-  {
-    rIndex = this.rowIndex;
-    console.log(rIndex);
-    var rootRef = firebase.database().ref().child("menulist/"+(rIndex-1));
+    var rootRef = firebase.database().ref().child("menulist/"+id);
     rootRef.remove().then(function() {
-    
+
+      //alert("delete successfully");  
       console.log("remove successed");
     }); 
     
   }
- }
-}
-
-
-
+ 
 
 
 // data edit form menulist
-     function edit(x){
+     function edit(id){
 
+     // console.log(id);
+   
       // itemid =  x.parentNode.parentNode.rowIndex+1;
-       var rootRef = firebase.database().ref('/menulist/10');
+       var rootRef = firebase.database().ref('/menulist/'+id);
           rootRef.on("value", function(snapshot) {
           console.log( snapshot.val());
           document.getElementById('itemname').value = snapshot.val().itemname;
@@ -174,11 +177,15 @@ for(var i = 0; i < table.rows.length;i++)
           document.getElementById('available').value = snapshot.val().available;
           document.getElementById('mealtype').value = snapshot.val().mealtype;
           document.getElementById('category').value = snapshot.val().category;
-
+       
        });
+      
       }
 
-  function MenuListUpdate(){
+  function MenuListUpdate(x){
+
+    //  console.log(id);
+     
     var rootRef = firebase.database().ref();
     itemname = document.getElementById('itemname').value
     shortcode = document.getElementById('shortcode').value
@@ -194,7 +201,9 @@ for(var i = 0; i < table.rows.length;i++)
 
     data = {itemname,shortcode,onlinedisplayname,subcategory,price,minimumpreparationtime,hsncode,description,available,mealtype,category}
    // itemid =  x.parentNode.parentNode.rowIndex+1;
-    rootRef.child('menulist/10').update(data)
+    rootRef.child('menulist/10').update(data);
+
+
 
 
   }
@@ -229,40 +238,27 @@ for(var i = 0; i < table.rows.length;i++)
 
 var rootRef = firebase.database().ref().child("tables");
 
-rootRef.on("child_added", snap => {
+rootRef.on("child_added", snap => { 
+  // var myjson = JSON.stringify(snap.val());
+  // console.log(myjson);
   //var itemid = snap.apiKey().val();
   var status = snap.child("status").val();
   var tableid  = snap.child("tableid").val();
   var tablename  = snap.child("tablename").val();
   var totalprice  = snap.child("totalprice").val();
- $("#table_body1").append("<tr><td><button   data-toggle='modal' data-target='#Modal'   onclick='mybutton(this)' href=''>"+tablename +"</button></td></tr>");
+ $("#table_body1").append("<tr><td><button id= '"+tableid+"'  data-toggle='modal' data-target='#Modal'   onclick='mybutton(this.id)' href=''>"+tablename +"</button></td></tr>");
  
 });
 
-function mybutton(x){
+function mybutton(id){
+
+  console.log(id);
 
   var rootRef = firebase.database().ref().child("tables");
-
-
-
-
-  rootRef.orderByKey().on("child_added", function(snapshot) {
-  console.log(snapshot.key);
-});
-
-
-
-
-
-
   rootRef.on("child_added", snap => {
     var tableid  = snap.child("tableid").val();
-
      console.log(tableid);
-     
-     var rootRef = firebase.database().ref('tables/'+tableid);
-   
-
+     var rootRef = firebase.database().ref('tables/'+id);
       rootRef.on("value", function(snapshot) {
       console.log( snapshot.val());
     document.getElementById('status').value = snapshot.val().status;
@@ -270,8 +266,6 @@ function mybutton(x){
     document.getElementById('tablename').value = snapshot.val().tablename;
     document.getElementById('totalprice').value = snapshot.val().totalprice;
    });
-
-
   })
 
   }
