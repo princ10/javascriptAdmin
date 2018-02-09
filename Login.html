@@ -201,12 +201,12 @@
                 
 
 
-                      <!-- add menu list -->
+                          <!-- add menu list -->
 
                                                       <div class="container">
                                                       
                                                         <!-- Trigger the modal with a button -->
-                                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Add MenuList</button>
+                                                        <button style="width:120px; font-size:12px" type="button" class="btn-info btn pull-right" data-toggle="modal" data-target="#myModal1">Add MenuList</button>
                                                       
                                                         <!-- Modal -->
                                                         <div class="modal fade" id="myModal1" role="dialog">
@@ -223,76 +223,85 @@
 
 
 
-                                                                  <form   class="form-horizontal" >
+                                                                  <form  id="menuList"  class="form-horizontal" >
                                                                       <div class="form-group">
                                                                         <label class="control-label col-sm-2" for="itemname">ItemName</label>
                                                                         <div class="col-sm-10">
-                                                                          <input type="text" class="form-control" id="itemname" placeholder=" Enter ItemName">
+                                                                          <input type="text" class="form-control" id="itemnameadd" placeholder=" Enter ItemName">
                                                                         </div>
                                                                       </div>
                                                                       <div class="form-group">
                                                                         <label class="control-label col-sm-2" for="shortcode">ShortCode</label>
                                                                         <div class="col-sm-10"> 
-                                                                          <input type="text" class="form-control" id="shortcode" placeholder="Enter ShortCode">
+                                                                          <input type="text" class="form-control" id="shortcodeadd" placeholder="Enter ShortCode">
                                                                         </div>
                                                                       </div>
                                                                       <div class="form-group">
                                                                               <label class="control-label col-sm-2" for="onlinedisplayname">OnlineDisplayName</label>
                                                                               <div class="col-sm-10"> 
-                                                                                <input type="text" class="form-control" id="onlinedisplayname" placeholder="Enter OnlineDisplayName">
+                                                                                <input type="text" class="form-control" id="onlinedisplaynameadd" placeholder="Enter OnlineDisplayName">
                                                                          </div>
                                                                       </div>
                                                                       <div class="form-group">
                                                                                   <label class="control-label col-sm-2" for="subcategory">SubCategory</label>
                                                                                   <div class="col-sm-10"> 
-                                                                                    <input type="text" class="form-control" id="subcategory" placeholder="Enter SubCategory">
+                                                                                    <input type="text" class="form-control" id="subcategoryadd" placeholder="Enter SubCategory">
                                                                           </div>
                                                                        </div>
                                                                        <div class="form-group">
                                                                               <label class="control-label col-sm-2" for="price">Price</label>
                                                                               <div class="col-sm-10"> 
-                                                                                <input type="text" class="form-control" id="price" placeholder="Enter Price">
+                                                                                <input type="text" class="form-control" id="priceadd" placeholder="Enter Price">
                                                                               </div>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                   <label class="control-label col-sm-2" for="minimumpreparationtime">MinimumPreprationTime</label>
                                                                                   <div class="col-sm-10"> 
-                                                                                    <input type="text" class="form-control" id="minimumpreparationtime" placeholder="Enter MinimumPreprationTime">
+                                                                                    <input type="text" class="form-control" id="minimumpreparationtimeadd" placeholder="Enter MinimumPreprationTime">
                                                                                   </div>
                                                                                 </div>
                                                                                 <div class="form-group">
                                                                                       <label class="control-label col-sm-2" for="hsncode">HSNCode</label>
                                                                                       <div class="col-sm-10"> 
-                                                                                        <input type="text" class="form-control" id="hsncode" placeholder="Enter HSNCode">
+                                                                                        <input type="text" class="form-control" id="hsncodeadd" placeholder="Enter HSNCode">
                                                                                       </div>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                           <label class="control-label col-sm-2" for="description">Description</label>
                                                                                           <div class="col-sm-10"> 
-                                                                                            <input type="text" class="form-control" id="description" placeholder="Enter Description">
+                                                                                            <input type="text" class="form-control" id="descriptionadd" placeholder="Enter Description">
                                                                                           </div>
                                                                                         </div>
 
                                                                                             <div class="form-group">
                                                                                                   <label class="control-label col-sm-2" for="available">Available</label>
                                                                                                   <div class="col-sm-10"> 
-                                                                                                    <input type="text" class="form-control" id="available" placeholder="Enter Available">
+                                                                                                    <input type="text" class="form-control" id="availableadd" placeholder="Enter Available">
                                                                                                   </div>
                                                                                                 </div>
 
                                                                                                 <div class="form-group">
                                                                                                       <label class="control-label col-sm-2" for="mealtype">MealType</label>
                                                                                                       <div class="col-sm-10"> 
-                                                                                                        <input type="text" class="form-control" id="mealtype" placeholder="Enter MealType ">
+                                                                                                        <input type="text" class="form-control" id="mealtypeadd" placeholder="Enter MealType ">
                                                                                                       </div>
                                                                                                     </div>
 
                                                                                                     <div class="form-group">
                                                                                                           <label class="control-label col-sm-2" for="category">Category</label>
                                                                                                           <div class="col-sm-10"> 
-                                                                                                            <input type="text" class="form-control" id="category" placeholder="Enter Category">
+                                                                                                            <input type="text" class="form-control" id="categoryadd" placeholder="Enter Category">
                                                                                                           </div>
                                                                                                         </div>
+
+                                                                                                       
+                                                                        <div class="form-group"> 
+                                                                          <div class="col-sm-offset-2 col-sm-10">
+                                                                            <button type="submit" class="btn btn-default" onclick="MenuListAdd(this)">Submit</button>
+                                                                          </div>
+                                                                        </div>
+                                                                      </form> 
+                                                                            
 
 
 
@@ -312,88 +321,72 @@
                                   <!-- end MenuList -->
 
 
-
+            
                                                 
                                         </tbody>
                                     </table> 
+
+                                 <!-- upload menulist -->
+                                    <form action="/action_page.php">
+                                      <input type="file" name="pic" accept="image/*">
+                                      <input type="submit">
+                                    </form>
                             </div>
 
-                             <div style="overflow:scroll ;display:none "; id="mydiv">
+
+
+
+
+                             <div style="display:none "; id="mydiv">
+
+
+                                   <div style="overflow:scroll " id="d1">
+                                            <table  class="table">
+                                                  <thead>
+                                                 <tr>
+                                              
+                                                   <th>table</th>  
+                                              
+                                                 </tr>
+                                               </thead>
+                                             <tbody id="table_body1" >
+
+                                        
+
+                                               </tbody>
+                                              </table>   
+                                  
+                                 </div> 
+
+                                 <div id="d2">
+
                                     <table  class="table">
                                         <thead>
-                                            <tr>
-                                              
-                                              <th>table</th>  
-                                              
-                                            </tr>
-                                        </thead>
-                                        <tbody id="table_body1" >
-
-                                            <div class="container">
-                                                       
-                                                <!-- Trigger the modal with a button -->
-                                                <!-- <button type="button" class="btn btn-info btn-lg" >Open Modal</button> -->
-                                              
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="Modal" role="dialog"> 
-                                                  <div class="modal-dialog">
-                                                  
-                                                    <!-- Modal content-->
-                                                    <div class="modal-content">
-                                                      <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>  
-                                                        <h4 class="modal-title">Item Detail</h4>
-                                                      </div>
-                                                      <div   class="modal-body">
-
-                                                            <form id="aaaupbody"  class="form-horizontal" >
-                                                                <div class="form-group">
-                                                                  <label class="control-label col-sm-2" for="status">status</label>
-                                                                  <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" id="status" placeholder=" Enter ItemName">
-                                                                  </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                  <label class="control-label col-sm-2" for="tableid">tableid</label>
-                                                                  <div class="col-sm-10"> 
-                                                                    <input type="text" class="form-control" id="tableid" placeholder="Enter ShortCode">
-                                                                  </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                        <label class="control-label col-sm-2" for="tablename">tablename:</label>
-                                                                        <div class="col-sm-10"> 
-                                                                          <input type="text" class="form-control" id="tablename" placeholder="Enter OnlineDisplayName">
-                                                                   </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                            <label class="control-label col-sm-2" for="totalprice">totalprice</label>
-                                                                            <div class="col-sm-10"> 
-                                                                              <input type="text" class="form-control" id="totalprice" placeholder="Enter SubCategory">
-                                                                    </div>
-                                                                 </div>
-                                                                
-                                                                                 
-                                                             
-                                                                    
-                                                      </div>
-                                                      <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                      </div>
-                                                    </div>
-                                                    
-                                                  </div>
-                                                </div>
-                                                
-                                              </div>  
-
+                                       <tr>
+                                        <tr><th>table Detail</th></tr>
+                                         <th>status</th>  
+                                         <th>tableid</th>
+                                         <th>tablename</th>
+                                         <th>totalprice</th>
                                     
+                                       </tr>
+                                     </thead>
+                                   <tbody id="captain_table_details" >
+                              
+                                       
+
+                                     </tbody>
+                                    </table>   
 
 
-                                        </tbody>
-                                    </table> 
-                            </div> 
+                                  </div>
 
 
+
+                            </div>
+
+                          
+                      <!-- table for kd Display -->
                             <div style="overflow:scroll; display:none"; id="kddiv">
                                 <table  class="table">
                                     <thead>
@@ -441,7 +434,7 @@
               <input class="form-control" type="password" name="password" id="password_field" required><br>
              </div>
         
-             <p class="full">
+             <p class="">
              <button class="btn btn-info" onclick="login()" type="submit">Login</button>
               </p>
           
