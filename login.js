@@ -97,15 +97,18 @@ function myFunction(x) {
   var x = document.getElementById("myDIV");
   var y = document.getElementById("mydiv")
   var z = document.getElementById("kddiv")
+  var m = document.getElementById("login_div")
    if (x.style.display === "none") {
        x.style.display = "block";
        y.style.display = "none";
        z.style.display = "none";
+       m.style.display = "none";
 
     } else {
        x.style.display = "block";
        y.style.display = "none";
        z.style.display = "none";
+       m.style.display = "none";
       
     }
 }
@@ -148,11 +151,13 @@ function DelData(id){
 
     var rootRef = firebase.database().ref().child("menulist/"+id);
     rootRef.remove().then(function() {
-
+      var x = document.getElementById("myDIV");
+      var m = document.getElementById("login_div")
+      x.style.display = "block";
+      m.style.display = "none";
       //alert("delete successfully");  
       console.log("remove successed");
     }); 
-    
   }
  
 
@@ -165,7 +170,7 @@ function DelData(id){
       // itemid =  x.parentNode.parentNode.rowIndex+1;
        var rootRef = firebase.database().ref('/menulist/'+id);
           rootRef.on("value", function(snapshot) {
-          console.log( snapshot.val());
+        //  console.log( snapshot.val());
           document.getElementById('itemname').value = snapshot.val().itemname;
           document.getElementById('shortcode').value = snapshot.val().shortcode;
           document.getElementById('onlinedisplayname').value = snapshot.val().onlinedisplayname;
@@ -179,31 +184,35 @@ function DelData(id){
           document.getElementById('category').value = snapshot.val().category;
        
        });
-      
       }
 
-  function MenuListUpdate(x){
 
-    //  console.log(id);
-     
-    var rootRef = firebase.database().ref();
-    itemname = document.getElementById('itemname').value
-    shortcode = document.getElementById('shortcode').value
-    onlinedisplayname = document.getElementById('onlinedisplayname').value
-    subcategory = document.getElementById('subcategory').value
-    price = document.getElementById('price').value
-    minimumpreparationtime = document.getElementById('minimumpreparationtime').value
-    hsncode = document.getElementById('hsncode').value
-    description = document.getElementById('description').value
-    available = document.getElementById('available').value
-    mealtype = document.getElementById('mealtype').value
-    category = document.getElementById('category').value
+      function MenuListUpdate(id){
 
-    data = {itemname,shortcode,onlinedisplayname,subcategory,price,minimumpreparationtime,hsncode,description,available,mealtype,category}
-   // itemid =  x.parentNode.parentNode.rowIndex+1;
-    rootRef.child('menulist/10').update(data);
+        //  console.log(id);
+         
+        var rootRef = firebase.database().ref();
+        itemname = document.getElementById('itemname').value
+        shortcode = document.getElementById('shortcode').value
+        onlinedisplayname = document.getElementById('onlinedisplayname').value
+        subcategory = document.getElementById('subcategory').value
+        price = document.getElementById('price').value
+        minimumpreparationtime = document.getElementById('minimumpreparationtime').value
+        hsncode = document.getElementById('hsncode').value
+        description = document.getElementById('description').value
+        available = document.getElementById('available').value
+        mealtype = document.getElementById('mealtype').value
+        category = document.getElementById('category').value
+    
+        data = {itemname,shortcode,onlinedisplayname,subcategory,price,minimumpreparationtime,hsncode,description,available,mealtype,category}
+       // itemid =  x.parentNode.parentNode.rowIndex+1;
+        rootRef.child('menulist/10').update(data);
 
-  }
+        console.log(id);
+    
+      }
+
+ 
 
   //menuLiat add 
      
