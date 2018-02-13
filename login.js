@@ -119,8 +119,6 @@ function myFunction(x) {
 var rootRef = firebase.database().ref().child("menulist/");  
 
 rootRef.on("child_added", snap => {
- 
-
   var k = snap.key;
 
  // console.log(k);
@@ -143,7 +141,7 @@ rootRef.on("child_added", snap => {
 });
 
 
-//data remove from MenuList firebase
+//data remove from MenuList firebase 
 
 function DelData(id){
 
@@ -269,6 +267,34 @@ function DelData(id){
       z.style.display = "none";
    }
   } 
+  //table add
+  function TableListAdd(){
+
+    var rootRef = firebase.database().ref().child("tables/");
+
+    var newPostRef = rootRef.push();
+
+    console.log(newPostRef);
+  
+
+status = document.getElementById('status').value
+tableid = document.getElementById('tableid').value
+tablename = document.getElementById('tablename').value
+totalprice = document.getElementById('totalprice').value
+data = {status,tableid,tablename,totalprice}
+// itemid =  x.parentNode.parentNode.rowIndex+1;
+newPostRef.set(data);
+
+}
+
+
+
+
+
+
+
+
+
 
 // for caption table list
 
@@ -279,11 +305,17 @@ rootRef.on("child_added", snap => {
   // var myjson = JSON.stringify(snap.val());
   // console.log(myjson);
   //var itemid = snap.apiKey().val();
+  var key = snap.key;
+ // console.log(key)
   var status = snap.child("status").val();
   var tableid  = snap.child("tableid").val();
   var tablename  = snap.child("tablename").val();
   var totalprice  = snap.child("totalprice").val();
- $("#table_body1").append("<tr><td><button id= '"+tableid+"'  onclick='mybutton(this.id)' href=''>"+tablename +"</button></td></tr>");
+ $("#table_body1").append("<tr><td><button id= '"+key+"'  onclick='mybutton(this.id)' href=''>"+tablename +"</button></td></tr>");
+
+//  $( "button" ).click(function() {
+//   $( "#d2" ).empty();
+// });
  
 });
 
@@ -295,7 +327,7 @@ function mybutton(id){
  //  captain_table_details.deleteRow(0);
      var rootRef = firebase.database().ref('tables/'+id);
       rootRef.on("value", function(snap) {
-      
+
       var status = snap.child("status").val();
       var tableid  = snap.child("tableid").val();
       var tablename  = snap.child("tablename").val();
@@ -334,13 +366,14 @@ var rootRef = firebase.database().ref().child("tables");
 
  rootRef.on("child_added", snap => {
 
-  var tableid  = snap.child("tableid").val();
+  var tablename  = snap.child("tablename").val();
+  console.log(tablename);
 
-  var rootRef = firebase.database().ref().child("booked/"+tableid);
+  var rootRef = firebase.database().ref().child("bookedmain/"+tablename);
   rootRef.on("child_added", snap => {
     var k = snap.key;
   
-    var rootRef = firebase.database().ref().child("booked/"+tableid).child(""+k);
+    var rootRef = firebase.database().ref().child("bookedmain/"+tablename).child(""+k);
     rootRef.on("child_added", snap => {
       var captainName = snap.child("captainName").val();
        itemPrice  = snap.child("itemPrice").val();
